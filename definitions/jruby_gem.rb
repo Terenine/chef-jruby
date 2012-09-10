@@ -9,7 +9,7 @@
 
 define :jruby_gem, :source => nil, :version => nil do
   gem_package params[:name] do
-    gem_binary "#{node[:jruby][:install_path]}/bin/gem"
+    gem_binary "/usr/local/bin/jgem"
     source params[:source] if params[:source]
     version params[:version] if params[:version]
   end
