@@ -25,8 +25,8 @@ prefix =  node[:jruby][:install_path]
 
 file "/etc/profile.d/jruby.sh" do
   mode "0644"
-  content "PATH=\$PATH:" + File.join(prefix, "bin")
-  action :nothing
+  content "PATH=/usr/local/share/jruby-1.7.0.preview2/bin:\$PATH:" + File.join(prefix, "bin")
+  action :create
 end
 
 # install jruby
@@ -55,3 +55,14 @@ node[:jruby][:gems].each do |gem|
   end
   jruby_gem name, gem || {}
 end
+
+# create symlink for ruby and gems
+link "/usr/local/bin/ruby" do
+  to "/usr/local/bin/jruby"
+end
+
+link "/usr/local/bin/gem" do
+  to "/usr/local/bin/jgem"
+end
+
+
