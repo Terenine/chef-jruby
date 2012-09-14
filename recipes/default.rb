@@ -25,7 +25,7 @@ prefix =  node[:jruby][:install_path]
 
 file "/etc/profile.d/jruby.sh" do
   mode "0644"
-  content "JRUBY_OPTS=\"-Xcompat.version=1.9 -Xcext.enabled=true\"\nPATH=/usr/local/share/jruby-1.7.0.preview2/bin:\$PATH:" + File.join(prefix, "bin") + "\n"
+  content "export JRUBY_OPTS=\"-Xcompat.version=1.9 -Xcext.enabled=true\"\nexport PATH=/usr/local/share/jruby-1.7.0.preview2/bin:\$PATH:" + File.join(prefix, "bin") + "\n"
   action :create
 end
 
